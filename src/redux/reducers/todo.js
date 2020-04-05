@@ -20,24 +20,24 @@ const todoReducer = (state = initialState, action) => {
             else return state
         }
         case DELETE_TODO: {
-            const array = state.todos
-            const index = array.indexOf(array.find(todo => todo.id === action.payload.id))
-            if (array[index].completed) {
-                array.splice(index, 1)
+            const todoList = state.todos
+            const index = todoList.indexOf(todoList.find(todo => todo.id === action.payload.id))
+            if (todoList[index].completed) {
+                todoList.splice(index, 1)
                 return {
                     ...state,
-                    todos: [...array]
+                    todos: [...todoList]
                 }
             }
             else return state
         }
         case CHECK_TODO: {
-            const array = state.todos
-            const index = array.indexOf(array.find(todo => todo.id === action.payload.id))
-            array[index].completed = !array[index].completed
+            const todoList = state.todos
+            const index = todoList.indexOf(todoList.find(todo => todo.id === action.payload.id))
+            todoList[index].completed = !todoList[index].completed
             return {
                 ...state,
-                todos: [...array]
+                todos: [...todoList]
             }
         }
         default: return state
